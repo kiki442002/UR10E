@@ -14,13 +14,16 @@ def on_message(client, userdata, msg):
 
 # Create an MQTT client
 client = mqtt.Client()
+# Définir le nom d'utilisateur et le mot de passe
+client.username_pw_set("user", "admin")
+
 
 # Set up callbacks
 client.on_connect = on_connect
 client.on_message = on_message
 
 # Connect to the broker (replace with your broker details)
-broker_address = "192.168.4.1"
+broker_address = "localhost"
 client.connect(broker_address, 1883, 60)
 
 # Start the MQTT loop
