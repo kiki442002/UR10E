@@ -23,7 +23,7 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 # Connect to the broker (replace with your broker details)
-broker_address = "localhost"
+broker_address = "192.168.4.1"
 client.connect(broker_address, 1883, 60)
 
 # Start the MQTT loop
