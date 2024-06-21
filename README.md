@@ -31,8 +31,8 @@ password_file path/of/file/mosquitto_pswd.conf
     "stop": "boolean",  // if true robot is stopped
     "relative": "boolean", // if true TCP position move of distance
     "speed": "integer",
-    "new_pos": "p[float, float, float, float, float, float]", // X,Y,Z,Rx,Ry,Rz of TCP distance of position
-    "gripper": ["string","integer"]
+    "new_pos": ["float", "float", "float", "float", "float", "float"], // X,Y,Z,Rx,Ry,Rz of TCP distance of position
+    "gripper": ["integer","integer"] // target, force
 }
 ```
 ## Status of the robot
