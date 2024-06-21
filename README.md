@@ -5,7 +5,7 @@ This repository allow the robot UR10e to be controlled by MQTT commands with thi
 ## Requirements
 Install mosquitto broker: https://mosquitto.org/download/
 
-Set up your ip adress to be on the network: 192.168.4.0/24 and the ip adress of the broker must be 192.168.4.1
+Set up your ip adress to be on the network: 192.168.4.0/24 and the ip adress of the broker must be 192.168.4.1 (basicely your PC).
 
 ## Start broker
 You can start it with:
