@@ -3,7 +3,9 @@ This repository allow the robot UR10e to be controlled by MQTT commands with thi
 
 # MQTT Broker
 ## Requirements
-Install mosquitto broker: https://mosquitto.org/download/
+Install mosquitto broker: https://mosquitto.org/download/  
+
+All setup files are in Mosquitto directory of this repository.
 
 Set up your ip adress to be on the network: 192.168.4.0/24 and the ip adress of the broker must be 192.168.4.1 (basicely your PC).
 
@@ -29,7 +31,8 @@ password_file path/of/file/mosquitto_pswd.conf
     "stop": "boolean",  // if true robot is stopped
     "relative": "boolean", // if true TCP position move of distance
     "speed": "integer",
-    "new_pos": ["float", "float", "float", "float", "float", "float"] // X,Y,Z,Rx,Ry,Rz of TCP distance of position
+    "new_pos": "p[float, float, float, float, float, float]", // X,Y,Z,Rx,Ry,Rz of TCP distance of position
+    "gripper": ["string","integer"]
 }
 ```
 ## Status of the robot
