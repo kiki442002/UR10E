@@ -29,10 +29,15 @@ password_file path/of/file/mosquitto_pswd.conf
 ```json
 {
     "stop": "boolean",  // if true robot is stopped
-    "relative": "boolean", // if true TCP position move of distance
+    "freedrive": "boolean",  //allow the robot to be move by the hands of operator
     "speed": "integer",
-    "new_pos": ["float", "float", "float", "float", "float", "float"], // X,Y,Z,Rx,Ry,Rz of TCP distance of position
-    "gripper": ["integer","integer"] // target, force
+
+    "reference_plan": "char[2]", // if true TCP position move of distance
+    "new_pos": ["float", "float", "float", "float", "float", "float"], // X,Y,Z,Rx,Ry,Rz of reference plan
+    "target_point": "integer", // go to target point 1,2,3 etc...
+    "gripper": ["integer","integer"], // target, force
+    
+    "systeme_msg" : "String" //message shwow to the operator
 }
 ```
 ## Status of the robot
