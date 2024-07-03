@@ -25,21 +25,25 @@ password_file path/of/file/mosquitto_pswd.conf
 
 ## Order of the robot
 **You need to sent the order to the topic robot/order**
-
 ```json
 {
-    "stop": "boolean",  // if true robot is stopped
-    "freedrive": "boolean",  //allow the robot to be move by the hands of operator
-    "speed": "integer",
-
-    "program_loop": "boolean", //loop the instruction
-    "reference_plan": "char[2]", // if true TCP position move of distance
-    "new_pos": ["float", "float", "float", "float", "float", "float"], // X,Y,Z,Rx,Ry,Rz of reference plan
-    "target_point": "integer", // go to target point 1,2,3 etc...
-    "gripper": ["integer","integer", "boolean"], // target, force, depth compensation    
-    "systeme_msg" : "String" //message shwow to the operator
+     
+    "order": "integer", 
+    "new_pos": ["float", "float", "float", "float", "float", "float"],
+    "target_point": "integer",
+    "freedrive": "integer",
+    "systeme_msg": "String"
 }
 ```
+Field description:
+
+
+order: Defines the robot action type: give an object to preset zone at the user (1), take an object to user at the preset zone (2), make a relative movement (3), set the robot in freedrive (4), stop the robot in emergency (5), go robot at home position (6) or (-1) if there is an error in the request.
+new_pos: Robot position in meters. x: Positive = Right, Negative = Left y: Positive = Front, Negative = Back z: Positive = Down, Negative = Up / rx, ry, rz: Robot rotation in degrees (specify rotation axes). By default, relative movement values are in centimeters.
+target_point: Zone where the robot moves in absolute movement. The zones can be named tools (-1) if there is a problem with an absolute movement command.
+freedrive: Take an object to user at the preset zone in freedrive mode (1).
+systeme_msg: Description of problems encountered when interpreting the command (leave blank if no error).
+
 ## Status of the robot
 **You need to subscribe to this topic robot/status**
 
