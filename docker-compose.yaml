@@ -18,7 +18,7 @@ services:
     container_name: mosquitto
     restart: unless-stopped
     volumes:
-      - ./docker_volumes/moquitto/config:/mosquitto/config
+      - ./docker_volumes/mosquitto/config:/mosquitto/config
     ports:
       - 1883:1883 #mqtt port
     stdin_open: true
