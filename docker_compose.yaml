@@ -9,7 +9,7 @@ services:
     ports:
       - 5900:5900 #Connect with a VNC client
       - 6080:6080 #Connect into a browser to access to the interface without VNC
-      
+
     volumes:
       - docker_volumes/programs:/ursim/programs
 
@@ -21,7 +21,5 @@ services:
       - docker_volumes/moquitto/config:/mosquitto/config
     ports:
       - 1883:1883 #mqtt port
-    stdin_open: true 
+    stdin_open: true
     tty: true
-
-      
