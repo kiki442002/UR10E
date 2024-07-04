@@ -1,7 +1,7 @@
 # UR10E controller over MQTT
 This repository allow the robot UR10e to be controlled by MQTT commands with this plugin:  https://www.universal-robots.com/fi/plus/products/4each/mqtt-connector-professional/.
 
-# MQTT Broker
+# MQTT Broker on a Computer/Server
 ## Requirements
 Install mosquitto broker: https://mosquitto.org/download/  
 
@@ -52,3 +52,35 @@ systeme_msg: Description of problems encountered when interpreting the command (
     "status": "string" //OK, turn_on, turn_off
 }
 ```
+
+# Simulation
+You can also use our project with a simulation bring on the URsim. On the simulation, you will access on a MQTT Broker directly intragted on the simulation. 
+
+## Installation
+
+### Install Docker
+The simulation works with a docker compose file. You need to install docker on your computer or server. 
+https://docs.docker.com/engine/install/ (see documentation).
+
+On linux:
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+On mac:
+
+```bash
+brew install docker
+```
+
+### Clone Repository
+```bash
+git clone https://github.com/kiki442002/UR10E.git
+```
+
+### Run
+```bash
+cd UR10E
+docker-compose up
+```
+
