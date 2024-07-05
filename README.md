@@ -107,16 +107,16 @@ Click on "on" two times. Every circles have to be green and then click on "exit"
 You must install the plugin only once. After that, you don't need to redo again, unless the container was clean.
 
 ![settings access](asset/settings.png)
-Open the robot settings.
+Open the robot settings. <br><br>
 
 ![settings menu](asset/settingq_menu.png)
-On the settings menu, go to System -> URCaps and click on the left bottom plus symbol. 
+On the settings menu, go to System -> URCaps and click on the left bottom plus symbol. <br><br>
 
 ![mqtt urcaps choice](asset/mqqt_urcpas_install.png)
-Select mqtt-connectors and click on open. 
+Select mqtt-connectors and click on open. <br><br>
 
 ![restart ursim](asset/restart.png)
-Click on the restart button <br><br>
+Click on the restart button <br><br><br><br>
 
 ![verify mqtt installation](asset/mqtt_verify_install.png)
 You can verify if the mqtt connector is installed in going into the installation window. On URCaps menu you must see MQTT Connector tab. 
