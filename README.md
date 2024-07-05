@@ -84,3 +84,39 @@ cd UR10E
 docker-compose up
 ```
 
+### Fisrt Utilisation
+#### Interface Access
+##### URL
+Open the url http://localhost:6080/vnc_auto.html, if the container is on the same laptop. Otherwise change localhost by the ip adress of the server. 
+You will access at the interface of URsim after you will click on connect.
+
+##### VNC Application
+You can also download a VNC application like [TigerVNC](https://tigervnc.org/) to connect to the interface of the robot. This solution is more sustainable. Open the application and write: ip_server_adress:5900 to connect to it. 
+
+#### URSIM
+
+##### Start the robot
+![first incoming on ursim](asset/ursim_interface.png)
+When you will acces to the interface you will see that. Fisrt at all you need to activate the robot before every usage. For that click on "power off" on the left bottom side. <br><br>
+
+![power on simulation](asset/power_on.png)
+Click on "on" two times. Every circles have to be green and then click on "exit".
+
+
+##### MQTT Plugin Installation
+You must install the plugin only once. After that, you don't need to redo again, unless the container was clean.
+
+![settings access](asset/settings.png)
+Open the robot settings.
+
+![settings menu](asset/settingq_menu.png)
+On the settings menu, go to System -> URCaps and click on the left bottom plus symbol. 
+
+![mqtt urcaps choice](asset/mqqt_urcpas_install.png)
+Select mqtt-connectors and click on open. 
+
+![restart ursim](asset/restart.png)
+Click on the restart button <br><br>
+
+![verify mqtt installation](asset/mqtt_verify_install.png)
+You can verify if the mqtt connector is installed in going into the installation window. On URCaps menu you must see MQTT Connector tab. 
