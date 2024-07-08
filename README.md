@@ -121,6 +121,6 @@ Click on the restart button <br><br><br><br>
 ![verify mqtt installation](asset/mqtt_verify_install.png)
 You can verify if the mqtt connector is installed in going into the installation window. On URCaps menu you must see MQTT Connector tab. 
 
-#### MQTT conection with simulation
+#### MQTT connection with simulation
 To connect to the MQTT broker you can use the ip address of the server with the port 1883, so on the same machine 'localhost:1883'. 
 In URSim, you need to indicate the name of the mosquitto broker container so just replace the ip address by 'mosquito' with the port 1883 again.
