@@ -91,7 +91,7 @@ Open the url http://localhost:6080/vnc_auto.html, if the container is on the sam
 You will access at the interface of URsim after you will click on connect.
 
 ##### VNC Application
-You can also download a VNC application like [TigerVNC](https://tigervnc.org/) to connect to the interface of the robot. This solution is more sustainable. Open the application and write: ip_server_adress:5900 to connect to it. 
+You can also download a VNC application like [TigerVNC](https://tigervnc.org/) to connect to the interface of the robot. This solution is more sustainable. Open the application and write: change_with_ip_server_adress:5900 to connect to it (basicly localhost:5900 if you are on the same machine). 
 
 #### URSIM
 
@@ -120,3 +120,7 @@ Click on the restart button <br><br><br><br>
 
 ![verify mqtt installation](asset/mqtt_verify_install.png)
 You can verify if the mqtt connector is installed in going into the installation window. On URCaps menu you must see MQTT Connector tab. 
+
+#### MQTT connecetion with simulation
+To connect to the MQTT broker you can use the ip address of the server with the port 1883, so on the same machine 'localhost:1883'. 
+In URSim, you need to indicate the name of the mosquitto broker container so just replace the ip address by 'mosquito' with the port 1883 again.
