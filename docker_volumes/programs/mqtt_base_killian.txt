@@ -1,0 +1,105 @@
+ Program
+   Variables Setup
+   BeforeStart
+     var_1≔mqtt_initialize_anonymous("192.168.4.1", 1883)
+     var_2≔mqtt_connect()
+     var_3≔mqtt_subscribe(topic_order)
+   Robot Program
+     MoveJ
+       Waypoint_7
+     Loop
+       Switch order
+         Case 1
+           Wait: 0.3
+           Call target_point_move
+           rst_mqtt≔mqtt_publish(topic_order, " ", 1,  True )
+           order≔6
+         Case 2
+           Wait: 0.3
+           Call back_target_point
+           rst_mqtt≔mqtt_publish(topic_order, " ", 1,  True )
+           order≔6
+         Case 3
+           mqtt_send_fc≔mqtt_publish("robot/return", order, 0,  False )
+           distance≔p[new_pos[0],new_pos[1],new_pos[2],new_pos[3],new_pos[4],new_pos[5]]
+           Call move
+           order≔0
+           distance≔p[0,0,0,0,0,0]
+           rst_mqtt≔mqtt_publish(topic_order, " ", 1,  True )
+         Case 4
+           MoveJ
+             Waypoint_2
+           Loop order==4
+             Script: freedrive.script
+           Script: end_freedrive.script
+         Case 6
+           MoveJ
+             Waypoint_3
+           order≔0
+         Default Case
+           Wait: 0.5
+   Thread_3
+     Wait: 0.5
+     If order==5
+       stopj(2)
+   move
+     MoveL
+       distance
+   Thread_1
+     Loop
+       Wait: 0.5
+       program_loop≔mqtt_get_json_message(topic_order, "program_loop", program_loop)
+       target_point≔mqtt_get_json_message(topic_order, "target_point", target_point)
+       freedrive≔mqtt_get_json_message(topic_order, "freedrive", freedrive)
+       new_pos≔mqtt_get_json_message(topic_order, "new_pos", new_pos)
+       stop≔mqtt_get_json_message(topic_order, "stop", stop)
+       order≔mqtt_get_json_message(topic_order, "order", order)
+   back_target_point
+     If freedrive≠1
+       MoveJ
+         Waypoint_6
+     Missing: RG Grip
+     MoveL
+       Direction: Base Z-
+         Until (tool_contact_detection)
+     Missing: RG Grip
+     MoveL
+       Direction: Base Z+
+         Until (distance)
+     MoveJ
+       Waypoint_5
+     Switch target_point
+       Case 1
+         MoveJ
+           Waypoint_4
+       Case 2
+         MoveJ
+           Waypoint_10
+     MoveL
+       Direction: Base Z-
+         Until (tool_contact_detection)
+     Missing: RG Grip
+   target_point_move
+     Wait: 0.5
+     MoveL
+       Direction: Base Z+
+         Until (distance)
+     Switch target_point
+       Case 1
+         MoveJ
+           Waypoint_4
+       Case 2
+         MoveJ
+           Waypoint_1
+     Missing: RG Grip
+     MoveL
+       Direction: Base Z-
+         Until (tool_contact_detection)
+       Missing: RG Grip
+       Direction: Base Z+
+         Until (distance)
+       Waypoint_5
+       Waypoint_6
+       Direction: Base Z-
+         Until (tool_contact_detection)
+       Missing: RG Grip
