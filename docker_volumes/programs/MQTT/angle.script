@@ -1,0 +1,5 @@
+pose_actuelle = get_actual_tcp_pose()
+angle_rotation = d2r(angle)
+rotation_z = p[0, 0, 0, 0, 0, angle_rotation]
+nouvelle_pose = pose_trans(pose_actuelle, rotation_z)
+movel(nouvelle_pose)
