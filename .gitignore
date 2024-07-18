@@ -1,2 +1,10 @@
 .DS_Store
 docker_volumes/.DS_Store
+docker_volumes/programs/default.installation
+docker_volumes/programs/default.variables
+docker_volumes/programs/lightUp-1.0-SNAPSHOT.urcap
+docker_volumes/programs/scriptCommunicator-1.0-SNAPSHOT.urcap
+docker_volumes/programs/test.urp
+docker_volumes/programs/jsonParser-1.0-SNAPSHOT.urcap
+docker_volumes/programs/default.installation
+docker_volumes/programs/default.variables
