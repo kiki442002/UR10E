@@ -9,6 +9,7 @@ services:
     ports:
       - 5900:5900 #Connect with a VNC client
       - 6080:6080 #Connect into a browser to access to the interface without VNC
+      - 30001-30004:30001-30004 #Real-time client interface
 
     volumes:
       - ./docker_volumes/programs:/ursim/programs
