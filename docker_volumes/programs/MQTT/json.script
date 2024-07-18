@@ -48,11 +48,14 @@ end
 # @param variable :string the variable the function needs to find
 # @param debug :bool activ message debug
 ###
-def value_json_string(json_string, variable, debug=False):
+def value_json_string(json_string, variable, type="str",debug=False):
   #Verify the json string is not empty (2 brackets at minimal)
   if str_len(json_string) < 2:
     if debug:
       textmsg("The JSON string is empty or invalid")
+    end
+    if(type == "int"):
+      return 0
     end
     return " "
   end
@@ -75,9 +78,13 @@ def value_json_string(json_string, variable, debug=False):
       if str_find(value, "'")>0: #If the value is a string
         return str_sub(value, 2, str_len(value) - 3) #Return the value without the quotes
       end
-      return value
+      
+      return to_num(value)
     end
     idx = idx + 1
+  end
+  if(type == "int"):
+    return 0
   end
   return " "
 end
