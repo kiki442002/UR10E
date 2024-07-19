@@ -78,8 +78,10 @@ def value_json_string(json_string, variable, type="str",debug=False):
       if str_find(value, "'")>0: #If the value is a string
         return str_sub(value, 2, str_len(value) - 3) #Return the value without the quotes
       end
-      
-      return to_num(value)
+      if(type == "int"):
+        return to_num(value)
+      end
+      return str_sub(value, 1, str_len(value) - 2) #Return the value without the quotes
     end
     idx = idx + 1
   end
