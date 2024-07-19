@@ -1,12 +1,11 @@
 angle_rotation = d2r(angle)
-
 joint_angle = get_actual_joint_positions()
 joint_angle[5] = joint_angle[5]+angle_rotation
 
 if joint_angle[5]>6.28 :
-joint_angle[5] = 6.28
+    joint_angle[5] = 6.28
 elif joint_angle[5]<-6.28 :
-joint_angle[5] = -6.28
+    joint_angle[5] = -6.28
 end
-textmsg(joint_angle)
+
 movej(joint_angle, a=10, v=900)
