@@ -1,0 +1,41 @@
+{
+  "$defs": {
+    "PickupParams": {
+      "properties": {
+        "object": {
+          "enum": [
+            "box",
+            "pen",
+            "screwdriver"
+          ],
+          "title": "Object",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object"
+      ],
+      "title": "PutbackParams",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "name": {
+      "const": "Putback",
+      "enum": [
+        "Putback"
+      ],
+      "title": "Name",
+      "type": "string"
+    },
+    "params": {
+      "$ref": "#/$defs/PutbackParams"
+    }
+  },
+  "required": [
+    "name",
+    "params"
+  ],
+  "title": "PutbackCmd",
+  "type": "object"
+}

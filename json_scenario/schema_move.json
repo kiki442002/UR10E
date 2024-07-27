@@ -1,0 +1,47 @@
+{
+  "$defs": {
+    "MoveParams": {
+      "properties": {
+        "direction": {
+          "enum": [
+            "left",
+            "right",
+            "forward",
+            "backward"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "distance_cm": {
+          "title": "Distance Cm",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "direction",
+        "distance_cm"
+      ],
+      "title": "MoveParams",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "name": {
+      "const": "Move",
+      "enum": [
+        "Move"
+      ],
+      "title": "Name",
+      "type": "string"
+    },
+    "params": {
+      "$ref": "#/$defs/MoveParams"
+    }
+  },
+  "required": [
+    "name",
+    "params"
+  ],
+  "title": "MoveCmd",
+  "type": "object"
+}

@@ -1,0 +1,36 @@
+{
+  "$defs": {
+    "RotateParams": {
+      "properties": {
+        "angle": {
+          "title": "Angle",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "angle"
+      ],
+      "title": "RotateParams",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "name": {
+      "const": "Rotate",
+      "enum": [
+        "Rotate"
+      ],
+      "title": "Name",
+      "type": "string"
+    },
+    "params": {
+      "$ref": "#/$defs/RotateParams"
+    }
+  },
+  "required": [
+    "name",
+    "params"
+  ],
+  "title": "RotateCmd",
+  "type": "object"
+}

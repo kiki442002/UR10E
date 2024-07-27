@@ -1,0 +1,46 @@
+{
+  "properties": {
+    "name": {
+      "enum": [
+        "Stop",
+        "Move",
+        "Pickup",
+        "Rotate",
+        "Place",
+        "Putback"
+      ],
+      "title": "Name",
+      "type": "string"
+    },
+    "params": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "description": "Constrained list of runtime specific values.",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Params",
+      "type": "object"
+    }
+  },
+  "required": [
+    "name",
+    "params"
+  ],
+  "title": "GenericCommand",
+  "type": "object"
+}

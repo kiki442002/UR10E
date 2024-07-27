@@ -10,9 +10,13 @@ services:
       - 5900:5900 #Connect with a VNC client
       - 6080:6080 #Connect into a browser to access to the interface without VNC
       - 30001-30004:30001-30004 #Real-time client interface
+    extra_hosts:
+      - "host.docker.internal:192.168.1.200"
 
     volumes:
       - ./docker_volumes/programs:/ursim/programs
+      - ursim-gui-cache:/ursim/GUI
+      - urcap-build-cache:/ursim/.urcaps
 
   mosquitto:
     image: eclipse-mosquitto
@@ -24,3 +28,7 @@ services:
       - 1883:1883 #mqtt port
     stdin_open: true
     tty: true
+
+volumes:
+  ursim-gui-cache:
+  urcap-build-cache:

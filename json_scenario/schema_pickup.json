@@ -1,0 +1,41 @@
+{
+  "$defs": {
+    "PickupParams": {
+      "properties": {
+        "object": {
+          "enum": [
+            "box",
+            "pen",
+            "screwdriver"
+          ],
+          "title": "Object",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object"
+      ],
+      "title": "PickupParams",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "name": {
+      "const": "Pickup",
+      "enum": [
+        "Pickup"
+      ],
+      "title": "Name",
+      "type": "string"
+    },
+    "params": {
+      "$ref": "#/$defs/PickupParams"
+    }
+  },
+  "required": [
+    "name",
+    "params"
+  ],
+  "title": "PickupCmd",
+  "type": "object"
+}

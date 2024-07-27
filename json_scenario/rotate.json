@@ -1,0 +1,6 @@
+{
+  "name": "Rotate",
+  "params": {
+    "angle": 90
+  }
+}

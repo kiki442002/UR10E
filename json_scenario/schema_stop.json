@@ -1,0 +1,29 @@
+{
+  "$defs": {
+    "Empty": {
+      "additionalProperties": false,
+      "properties": {},
+      "title": "Empty",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "name": {
+      "const": "Stop",
+      "enum": [
+        "Stop"
+      ],
+      "title": "Name",
+      "type": "string"
+    },
+    "params": {
+      "$ref": "#/$defs/Empty"
+    }
+  },
+  "required": [
+    "name",
+    "params"
+  ],
+  "title": "StopCmd",
+  "type": "object"
+}

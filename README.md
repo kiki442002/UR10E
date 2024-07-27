@@ -1,6 +1,10 @@
 # UR10E controller over MQTT
 This repository allow the robot UR10e to be controlled by MQTT commands with this plugin:  https://www.universal-robots.com/fi/plus/products/4each/mqtt-connector-professional/.
 
+**You can use this project with a real UR bot or with the UR simulator:** 
+* To install it on real robot follow this tuto: [here](#mqtt-broker-on-a-computerserver).  
+* Otherwise to use the simulator follow this tuto: [here](#simulation)
+
 # MQTT Broker on a Computer/Server
 ## Requirements
 Install mosquitto broker: https://mosquitto.org/download/  
@@ -24,39 +28,38 @@ password_file path/of/file/mosquitto_pswd.conf
 # JSON Payload
 
 ## Order of the robot
-**You need to sent the order to the topic robot/order**
+**You need to sent the order to the topic robot/order**. below is an example of a Json order. You can see all the order in directory json_scenario (example and schema).
 ```json
 {
-     
-    "order": "integer", 
-    "new_pos": ["float", "float", "float", "float", "float", "float"],
-    "target_point": "integer",
-    "freedrive": "integer",
-    "systeme_msg": "String"
+  "name": "Move",
+  "params": {
+    "direction": "left",
+    "distance_cm": 10
+  }
 }
 ```
-Field description:
 
-
-order: Defines the robot action type: give an object to preset zone at the user (1), take an object to user at the preset zone (2), make a relative movement (3), set the robot in freedrive (4), stop the robot in emergency (5), go robot at home position (6) or (-1) if there is an error in the request.
-new_pos: Robot position in meters. x: Positive = Right, Negative = Left y: Positive = Front, Negative = Back z: Positive = Down, Negative = Up / rx, ry, rz: Robot rotation in degrees (specify rotation axes). By default, relative movement values are in centimeters.
-target_point: Zone where the robot moves in absolute movement. The zones can be named tools (-1) if there is a problem with an absolute movement command.
-freedrive: Take an object to user at the preset zone in freedrive mode (1).
-systeme_msg: Description of problems encountered when interpreting the command (leave blank if no error).
-
-## Status of the robot
-**You need to subscribe to this topic robot/status**
-
-```json
-{
-    "status": "string" //OK, turn_on, turn_off
-}
-```
 
 # Simulation
 You can also use our project with a simulation bring on the URsim. On the simulation, you will access on a MQTT Broker directly intragted on the simulation. 
 
 ## Installation
+
+### Install Git
+Install git to have the update and clone the repository on your computer/server.
+
+**Download [here](https://git-scm.com/downloads) or follow the different command line.**
+
+On linux:
+```bash
+sudo apt-get install git
+```
+
+On mac:
+
+```bash
+brew install git
+```
 
 ### Install Docker
 The simulation works with a docker compose file. You need to install docker on your computer or server. 
@@ -73,18 +76,38 @@ On mac:
 brew install docker
 ```
 
+### Install MQTTX
+**Download [here](https://mqttx.app/downloads) or follow the different command line.**
+
+On linux:
+```bash
+sudo apt-get install mqttx
+```
+
+On mac:
+
+```bash
+brew install mqttx
+```
+
 ### Clone Repository
+Clone the repository on diretory you want.
 ```bash
 git clone https://github.com/kiki442002/UR10E.git
 ```
 
 ### Run
+
+Open the directory where the git repository was clone on your terminal:
 ```bash
 cd UR10E
+```
+
+Run the docker compose with this command:
+```bash
 docker-compose up
 ```
 
-### Fisrt Utilisation
 #### Interface Access
 ##### URL
 Open the url http://localhost:6080/vnc_auto.html, if the container is on the same laptop. Otherwise change localhost by the ip adress of the server. 
@@ -93,7 +116,8 @@ You will access at the interface of URsim after you will click on connect.
 ##### VNC Application
 You can also download a VNC application like [TigerVNC](https://tigervnc.org/) to connect to the interface of the robot. This solution is more sustainable. Open the application and write: change_with_ip_server_adress:5900 to connect to it (basicly localhost:5900 if you are on the same machine). 
 
-#### URSIM
+
+### Fisrt Utilisation
 
 ##### Start the robot
 ![first incoming on ursim](asset/ursim_interface.png)
@@ -121,6 +145,35 @@ Click on the restart button <br><br><br><br>
 ![verify mqtt installation](asset/mqtt_verify_install.png)
 You can verify if the mqtt connector is installed in going into the installation window. On URCaps menu you must see MQTT Connector tab. 
 
-#### MQTT connection with simulation
+##### Lauch the program
+![open program](asset/open_program.png)
+Open this windows by clicking on open->program<br><br>
+
+![page program](asset/open_page_program.png)
+Open the directory MQTT and select MQTT_main.urp and click on open. The program will be now loaded.<br><br>
+
+![cancel window](asset/cancel_window.png)
+For each windows like that select **cancel**<br><br>
+
+![run program](asset/run_program_1.png)
+![run program](asset/run_program_2.png)
+Run the program by clicking on the play logo.<br><br>
+
+![move robot](asset/move_robot.png)
+Stay push on the button **Move robot to:** and run the program. We can access of the visual of the robot by clicking on **Graphics** tab or on the **Move** menu after.<br><br>
+
+**We have now done all the steps to lauch the program on the robot.**
+
+
+#### MQTT connection with simulation and MQTTX
 To connect to the MQTT broker you can use the ip address of the server with the port 1883, so on the same machine 'localhost:1883'. 
 In URSim, you need to indicate the name of the mosquitto broker container so just replace the ip address by 'mosquito' with the port 1883 again.
+
+
+### Stop
+If you want to stop doker containers just press ctrl+c on the terminal that you have lauch it before.
+Otherwise you can desintall all non persitant volume with the command:
+
+```bash
+docker-compose down
+```
