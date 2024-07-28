@@ -166,8 +166,18 @@ Stay push on the button **Move robot to:** and run the program. We can access of
 
 
 #### MQTT connection with simulation and MQTTX
-To connect to the MQTT broker you can use the ip address of the server with the port 1883, so on the same machine 'localhost:1883'. 
+To connect to the MQTT broker you can use the **ip address of the server with the port 1883**, so on the same machine 'localhost:1883'. 
 In URSim, you need to indicate the name of the mosquitto broker container so just replace the ip address by 'mosquito' with the port 1883 again.
+
+Open MQTTX and add a new server MQTT with this settings below:
+![settings mqttx](asset/mqttx_server.png)
+Replace your ip address by the ip address of your server and click on connect.<br><br>
+
+![send mqttx](asset/mqttx_send.png)
+You can now send a command on the text area in the back left side. Fill the topic with **robot/order** and select a JSON payload. To send your message click on the green button.<br>
+
+**You can now control the robot with MQTTX**
+
 
 
 ### Stop
