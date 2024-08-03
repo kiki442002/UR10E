@@ -4,6 +4,12 @@
 # @param delimiter :string the caracter to split the string
 # @param debug :bool activ message debug
 ###
+###
+# summary: This function is used to split a string into an array of substrings with a delimiter
+# @param str :string the string to split
+# @param delimiter :string the caracter to split the string
+# @param debug :bool activ message debug
+###
 MAX_VARIABLES = 100
 def str_split(str, delimiter, debug=False):
   result = make_list(0, "", MAX_VARIABLES) # Arrays to stock the result max 10 variables
@@ -24,20 +30,12 @@ def str_split(str, delimiter, debug=False):
     result.append(substring)
 
     # Update the start position and the end delimiter
-    str = str_sub(str, end_deli + str_len(delimiter), str_len(str))
+    str = str_sub(str, end_deli + str_len(delimiter), str_len(str) - (end_deli + str_len(delimiter)))
     end_deli = str_find(str, delimiter)
   end
 
-  # Add the last substring
-  if result.excess_capacity() > 0:
-    result.append(str)
-  elif debug:
-    textmsg("Number of variables exceeded")
-  end
-
-  if debug:
-    textmsg("Result: " + result.to_string())
-  end
+  # Append the last part of the string
+  result.append(str)
   return result
 end
 

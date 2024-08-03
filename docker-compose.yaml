@@ -5,7 +5,9 @@ services:
     image: universalrobots/ursim_e-series:latest
     restart: unless-stopped
     environment:
-      - ROBOT_MODEL=UR5 #robot model
+      - ROBOT_MODEL=UR10 #robot model
+      - VERSION=5.11.1.108318
+      - URSIM="https://s3-eu-west-1.amazonaws.com/ur-support-site/118926/URSim_Linux-5.11.1.108318.tar.gz"
     ports:
       - 5900:5900 #Connect with a VNC client
       - 6080:6080 #Connect into a browser to access to the interface without VNC
